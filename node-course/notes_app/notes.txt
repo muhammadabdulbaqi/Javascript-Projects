@@ -1,2 +1,0 @@
-My name is Muhammad
-This was added using appendFileSync
