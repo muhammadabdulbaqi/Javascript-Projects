@@ -2,12 +2,23 @@ import path from 'node:path';
 import express from 'express';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import hbs from 'hbs';
 
 const app = express()
-const publicDirectoryPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '../public');
 
+// Define paths for express config
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialsPath = path.join(__dirname, '../templates/partials');
+
+// Setup handlebars engine and views location
 app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
+// Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
@@ -30,6 +41,7 @@ app.get('/help', (req, res) => {
         title: 'Help',
         email: 'm.abdulbaqi1702@gmail.com',
         message: 'We are here to help you with any issues you may have.',
+        name: 'Muhammad Abdulbaqi'
     })
 })
 
