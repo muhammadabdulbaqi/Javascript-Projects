@@ -1,12 +1,16 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="./css/styles.css" />
-    <title>Help Page</title>
+    <link rel="icon" href="./images/weather-icon.jpg" type="image/png">
+    <title>Help</title>
   </head>
   <body>
-    {{> header }}
-    <p>If you have any questions, please email {{email}}</p>
-    <p>{{message}}.</p>
-    {{>footer}}
+    <div class="main-container">
+      {{> header }}
+      <p>If you have any questions, please email {{email}}</p>
+      <p>{{message}}</p>
+    </div>
+
+    {{> footer }}
   </body>
 </html>

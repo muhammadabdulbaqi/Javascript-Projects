@@ -52,6 +52,24 @@ app.get('/weather', (req, res) => {
     })
 })
 
+app.get(/^\/help\/.+/, (req, res) => {
+    res.render('help', {
+        title: '404 - Help Page Not Found',
+        name: 'Muhammad Abdulbaqi',
+        email: 'm.abdulbaqi1702@gmail.com',
+        errorMessage: 'Help article not found.'
+    })
+})
+
+
+app.get(/.*/, (req, res) => {
+    res.render('404', {
+        title: '404 - Page Not Found',
+        name: 'Muhammad Abdulbaqi',
+        errorMessage: 'The page you are looking for does not exist.'
+    });
+})
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000.')
